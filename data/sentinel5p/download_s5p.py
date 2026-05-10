@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 ee.Authenticate() 
 ee.Initialize(project='proyecto-analitica-3')
 
-CALI_BBOX = ee.Geometry.Rectangle([-76.60, 3.30, -76.40, 3.55])
+CALI_BBOX = ee.Geometry.Rectangle([-76.75, 3.20, -76.30, 3.75])
 YEAR      = '2020'
 DRIVE_DIR = 'geovision_s5p_daily'
 SCALE     = 1000

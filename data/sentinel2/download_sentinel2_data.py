@@ -36,6 +36,9 @@ lista_imagenes = s2_collection.toList(total_images)
 
 
 # ─── FUNCIÓN WORKER PARA DASK ────────────────────────────────────────────────
+import time # Asegúrate de que esto esté al inicio del script
+
+# ─── FUNCIÓN WORKER PARA DASK (CON REINTENTOS) ───────────────────────────────
 def procesar_sentinel_a_wasabi(index):
     img_id_short = "Desconocido"
     temp_dir = "temp_s2_downloads"
@@ -46,7 +49,6 @@ def procesar_sentinel_a_wasabi(index):
 
     try:
         nest_asyncio.apply()
-        
         load_dotenv()
         ee.Initialize(project=os.getenv('GEE_PROJECT_ID'))
         
@@ -69,43 +71,52 @@ def procesar_sentinel_a_wasabi(index):
         ruta_wasabi_bands = f'GeoVision/Sentinel2/Bands/{año}/{nombre_bands}'
         ruta_wasabi_scl   = f'GeoVision/Sentinel2/SCL/{año}/{nombre_scl}'
 
-        # ─── 3.5. CHECKPOINT: VERIFICAR SI YA EXISTE EN WASABI ───
+        # ─── 3.5. CHECKPOINT ───
         try:
-            # Si head_object no lanza error, el archivo existe
             s3_client.head_object(Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_bands)
             s3_client.head_object(Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_scl)
-             # AGREGA ESTE PRINT PARA VERLO EN LA CONSOLA EN TIEMPO REAL:
-            print(f"[⏭️] Omitido (Ya existe): {fecha} | {img_id_short}") 
-            
             return f"[⏭️] Omitido (Ya existe): {fecha} | {img_id_short}"
         except botocore.exceptions.ClientError as e:
             if e.response['Error']['Code'] == "404":
-                # El archivo no existe, procedemos con la descarga normal
-                pass
+                pass # No existe, procedemos
             else:
-                raise # Otro tipo de error (ej. credenciales malas)
-        # ──────────────────────────────────────────────────────────
+                raise 
 
         ruta_local_bands = os.path.join(temp_dir, nombre_bands)
         ruta_local_scl   = os.path.join(temp_dir, nombre_scl)
 
-        # 4. Descargar Bandas Espectrales (Escala 10m) 
-        img_bands = img.select(BANDAS_ESPECTRALES).clip(CALI_METRO)
-        geemap.download_ee_image(
-            image=img_bands, filename=ruta_local_bands, scale=10, region=CALI_METRO, crs='EPSG:4326'
-        )
+        # ─── BUCLE DE REINTENTOS PARA ESQUIVAR EL "TOO MANY REQUESTS" ───
+        max_reintentos = 3
+        for intento in range(max_reintentos):
+            try:
+                # Descargar Bandas Espectrales (10m)
+                img_bands = img.select(BANDAS_ESPECTRALES).clip(CALI_METRO)
+                geemap.download_ee_image(
+                    image=img_bands, filename=ruta_local_bands, scale=10, region=CALI_METRO, crs='EPSG:4326'
+                )
 
-        # 5. Descargar Máscara SCL (Escala 20m)
-        img_scl = img.select(BANDA_SCL).clip(CALI_METRO)
-        geemap.download_ee_image(
-            image=img_scl, filename=ruta_local_scl, scale=20, region=CALI_METRO, crs='EPSG:4326'
-        )
+                # Descargar Máscara SCL (20m)
+                img_scl = img.select(BANDA_SCL).clip(CALI_METRO)
+                geemap.download_ee_image(
+                    image=img_scl, filename=ruta_local_scl, scale=20, region=CALI_METRO, crs='EPSG:4326'
+                )
+                
+                # Si llega aquí, descargó con éxito, rompemos el bucle de reintentos
+                break 
 
-        # 6. Subir archivos a Wasabi
+            except Exception as e:
+                error_msg = str(e)
+                if "Too Many Requests" in error_msg and intento < max_reintentos - 1:
+                    print(f"  [⏳] GEE saturado en {fecha}. Esperando 15s (Intento {intento+1}/{max_reintentos})...")
+                    time.sleep(15) # Esperar 15 segundos para que Google nos perdone
+                else:
+                    raise e # Si es otro error o se acabaron los reintentos, que falle normalmente
+
+        # Subir archivos a Wasabi
         s3_client.upload_file(Filename=ruta_local_bands, Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_bands)
         s3_client.upload_file(Filename=ruta_local_scl, Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_scl)
 
-        # 7. Limpieza
+        # Limpieza
         os.remove(ruta_local_bands)
         os.remove(ruta_local_scl)
 
@@ -120,29 +131,26 @@ def procesar_sentinel_a_wasabi(index):
 if __name__ == '__main__':
     print(f"Total de imágenes Sentinel-2 a procesar: {total_images}")
     
-    # IMPORTANTE: Cambiamos a threads_per_worker=1
-    # Ponemos 3 workers para compensar y mantener la velocidad
-    client = Client(n_workers=3, threads_per_worker=1, memory_limit='5GB')
+    # ⚠️ CAMBIO VITAL: Bajamos a 1 worker para evitar el ban de Google ⚠️
+    client = Client(n_workers=1, threads_per_worker=1, memory_limit='6GB')
     print(f"Panel de Dask: {client.dashboard_link}")
 
     print("\nConstruyendo grafo de tareas...")
-    # Creamos las tareas (del 0 al total de imágenes encontradas)
     futures = [dask.delayed(procesar_sentinel_a_wasabi)(i) for i in range(total_images)]
 
-    print("Iniciando descargas. ¡Esto tomará varias horas debido al peso de Sentinel-2!")
+    print("Iniciando descargas...")
     resultados = dask.compute(*futures)
 
-    # Resumen
-    exitosos = sum(1 for r in resultados if '[✅]' in r)
+    # Resumen final
+    exitosos = sum(1 for r in resultados if '[✅]' in r) + sum(1 for r in resultados if '[⏭️]' in r)
     fallidos = total_images - exitosos
 
     print("\n" + "="*40)
     print("🚀 REPORTE FINAL DE SENTINEL-2")
-    print(f"✅ Descargados y subidos: {exitosos}")
+    print(f"✅ Procesados (Nuevos + Existentes): {exitosos}")
     print(f"❌ Fallidos: {fallidos}")
     print("="*40)
 
-    # Imprimir los primeros 5 errores para poder diagnosticarlos
     if fallidos > 0:
         print("\n🔍 DETALLE DE LOS ERRORES (Primeros 5):")
         errores = [r for r in resultados if '[❌]' in r]

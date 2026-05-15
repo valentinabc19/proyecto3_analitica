@@ -1,9 +1,9 @@
 import os
-import io
+#import io
 import json
 import hashlib
 import requests
-import rasterio
+#import rasterio
 import boto3
 import ee
 import dask
@@ -131,7 +131,7 @@ def procesar_s5p(fecha_str, contaminante):
 
             # QA FILTER
             image = image.updateMask(
-                image.select('qa_value').gte(config['qa'])
+                image.select('cloud_fraction').gte(config['qa'])
             )
 
             # Selección banda
@@ -163,7 +163,7 @@ def procesar_s5p(fecha_str, contaminante):
             )
 
             key = (
-                f'GeoVision/Sentinel5P/'
+                f'GeoVision/Sentinel5Pv2/'
                 f'{contaminante}/{año}/{nombre_archivo}'
             )
 

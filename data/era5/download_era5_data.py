@@ -13,7 +13,7 @@ WASABI_SECRET_KEY = os.getenv('WASABI_SECRET_KEY')
 WASABI_REGION     = os.getenv('WASABI_REGION')
 WASABI_BUCKET     = os.getenv('WASABI_BUCKET')
 CDS_TOKEN         = os.getenv('CDS_TOKEN') # Tu token de Copernicus
-CDS_URL           = os.getenv('CDS_URL', 'https://cds.climate.copernicus.eu/api')
+CDS_URL           = os.getenv('CDS_URL')
 
 # ─── CONFIGURACIÓN GEOGRÁFICA Y TEMPORAL (Pág 4 del PDF) ─────────────────────
 # Bounding Box para CDS [Norte, Oeste, Sur, Este]
@@ -33,34 +33,35 @@ VARIABLES = [
 ]
 
 # ─── FUNCIÓN DEL WORKER PARA DASK ────────────────────────────────────────────
+# ─── FUNCIÓN DEL WORKER PARA DASK ────────────────────────────────────────────
 def descargar_mes_y_subir(year, month):
     nombre_archivo = f'ERA5_Cali_{year}_{month}.nc'
     ruta_s3 = f'{WASABI_BUCKET}/GeoVision/ERA5/{nombre_archivo}'
 
     try:
-        # 1. Configurar conexión Wasabi dentro del worker
         fs = s3fs.S3FileSystem(
             key=WASABI_ACCESS_KEY,
             secret=WASABI_SECRET_KEY,
             client_kwargs={'endpoint_url': f'https://s3.{WASABI_REGION}.wasabisys.com'}
         )
 
-        # 2. Checkpoint: Verificar si ya se descargó previamente
         if fs.exists(ruta_s3):
             return f"[⏭️] Saltado (Ya existe): {nombre_archivo}"
 
-        # 3. Calcular los días exactos de ese mes (Evita pedir el 31 de Febrero y que CDS falle)
         _, num_dias = calendar.monthrange(int(year), int(month))
         dias_del_mes = [str(d).zfill(2) for d in range(1, num_dias + 1)]
 
-        # 4. Iniciar Cliente CDS
-        c = cdsapi.Client(url=CDS_URL, key=CDS_TOKEN, quiet=True, verify=False)
+        # ✅ URL y KEY pasados directamente: no depende de .cdsapirc ni os.environ
+        c = cdsapi.Client(
+            url='https://cds.climate.copernicus.eu/api',
+            key=CDS_TOKEN,
+            quiet=True,
+            verify=False
+        )
 
-        # 5. Descargar a espacio temporal
         with tempfile.TemporaryDirectory() as temp_dir:
             ruta_local = os.path.join(temp_dir, nombre_archivo)
 
-            # Petición a Copernicus (Este paso puede quedarse en cola varios minutos)
             c.retrieve(
                 'reanalysis-era5-single-levels',
                 {
@@ -81,10 +82,7 @@ def descargar_mes_y_subir(year, month):
                 return f"[❌] Error: Copernicus no devolvió {nombre_archivo}"
 
             tamaño_mb = round(os.path.getsize(ruta_local) / (1024**2), 2)
-
-            # 6. Subir a Wasabi
             fs.put(ruta_local, ruta_s3)
-
             return f"[✅] Éxito: {nombre_archivo} ({tamaño_mb} MB) subido a Wasabi."
 
     except Exception as e:

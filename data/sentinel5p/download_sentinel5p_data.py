@@ -1,133 +1,90 @@
 import os
-import ee
-import requests
-import boto3
-import dask
-from dask.distributed import Client
-from datetime import date, timedelta
-from dotenv import load_dotenv
+import pandas as pd
+from sodapy import Socrata
 
-# ─── CARGAR VARIABLES DE ENTORNO ─────────────────────────────────────────────
-load_dotenv()
-WASABI_ACCESS_KEY = os.getenv('WASABI_ACCESS_KEY')
-WASABI_SECRET_KEY = os.getenv('WASABI_SECRET_KEY')
-WASABI_REGION     = os.getenv('WASABI_REGION')
-WASABI_BUCKET     = os.getenv('WASABI_BUCKET')
-GEE_PROJECT       = os.getenv('GEE_PROJECT_ID')
+# ─── 1. RUTAS LOCALES ────────────────────────────────────────────────────────
+CARPETA_DESTINO = './data/sisaire'
+RUTA_LOCAL_CSV  = f'{CARPETA_DESTINO}/DAGMA_SISAIRE.csv'
 
-# ─── INICIALIZACIÓN DE GEE ───────────────────────────────────────────────────
-ee.Initialize(project=GEE_PROJECT)
+def extraer_sisaire_local():
+    print("🌐 Conectando a la API de Datos Abiertos de Colombia (Socrata)...")
+    
+    # Cliente de Socrata sin token
+    cliente = Socrata("www.datos.gov.co", None)
+    DATASET_ID = "g4t8-zkc3"
+    
+    # ─── 2. CONSULTA SQL A LA API (Con los nombres de columna reales) ────────
+    # Usamos nombre_fgda para el DAGMA y med_fecha_inicio para la fecha
+    query_where = "(municipio = 'Cali' OR municipio = 'Santiago de Cali' OR nombre_fgda = 'SISAIRE') AND med_fecha_inicio >= '2020-01-01T00:00:00.000'"
+    
+    print("⏳ Descargando registros históricos de Cali (2020-2024)...")
+    resultados = cliente.get(DATASET_ID, where=query_where, limit=500000)
+    
+    df_raw = pd.DataFrame.from_records(resultados)
+    
+    if df_raw.empty:
+        raise ValueError("❌ La API no devolvió datos. Verifica la consulta.")
+        
+    print(f"✅ Descarga completada: {len(df_raw)} registros obtenidos de la API.")
+    
+    # ─── 3. LIMPIEZA Y TRANSFORMACIÓN ───────────────────────────────────────
+    print("🧹 Estructurando el Dataset...")
+    
+    # Mapeo usando los nombres reales de la imagen que enviaste
+    columnas_utiles = {
+        'med_fecha_inicio': 'fecha',
+        'nombre_est': 'estacion', 
+        'msfl_code': 'contaminante',
+        'med_concentracion_estandar': 'concentracion',
+        'latitud': 'lat',
+        'longitud': 'lon'
+    }
+    
+    # Renombrar
+    columnas_presentes = {k: v for k, v in columnas_utiles.items() if k in df_raw.columns}
+    df = df_raw[list(columnas_presentes.keys())].rename(columns=columnas_presentes)
+    
+    # Convertir a tipos numéricos y de fecha
+    df['fecha'] = pd.to_datetime(df['fecha'], errors='coerce')
+    df['concentracion'] = pd.to_numeric(df['concentracion'], errors='coerce')
+    df['lat'] = pd.to_numeric(df['lat'], errors='coerce')
+    df['lon'] = pd.to_numeric(df['lon'], errors='coerce')
+    
+    # Eliminar vacíos
+    df = df.dropna(subset=['fecha', 'concentracion', 'lat', 'lon'])
+    
+    # ─── 4. FILTRO GEOESPACIAL (Bounding Box) ──────────────────────────────
+    print("🗺️ Aplicando recorte espacial BBox: [-76.75, 3.20, -76.30, 3.75]")
+    # Latitud entre 3.20 y 3.75 | Longitud entre -76.75 y -76.30
+    df = df[
+        (df['lat'] >= 3.20) & (df['lat'] <= 3.75) &
+        (df['lon'] >= -76.75) & (df['lon'] <= -76.30)
+    ]
+    
+    # ─── 5. HOMOLOGACIÓN DE CONTAMINANTES ──────────────────────────────────
+    df['contaminante'] = df['contaminante'].str.upper().str.strip()
+    # A veces en el SISAIRE vienen así, los estandarizamos:
+    df['contaminante'] = df['contaminante'].replace({
+        'PM 2.5': 'PM25',
+        'PM2.5': 'PM25',
+        'PM 10': 'PM10'
+    })
+    
+    contaminantes_validos = ['NO2', 'SO2', 'O3', 'PM10', 'PM25']
+    df = df[df['contaminante'].isin(contaminantes_validos)]
+    
+    df['año'] = df['fecha'].dt.year.astype(str)
+    df['mes'] = df['fecha'].dt.month.astype(str).str.zfill(2)
+    
+    print(f"Estructura final: {len(df)} mediciones limpias dentro del área de Cali.")
+    
+    # ─── 6. GUARDAR LOCALMENTE ─────────────────────────────────────────────
+    os.makedirs(CARPETA_DESTINO, exist_ok=True)
 
-# ─── PARÁMETROS DEL DATASET ──────────────────────────────────────────────────
-CALI_BBOX = ee.Geometry.Rectangle([-76.75, 3.20, -76.30, 3.75])
-SCALE     = 1000 # GEE lo remuestreará a 1km
+    print(f"📄 Guardando datos limpios en: {RUTA_LOCAL_CSV} ...")
+    df.to_csv(RUTA_LOCAL_CSV, index=False, encoding='utf-8')
 
-CONTAMINANTES = {
-    'NO2': {'collection': 'COPERNICUS/S5P/OFFL/L3_NO2', 'band': 'tropospheric_NO2_column_number_density'},
-    'SO2': {'collection': 'COPERNICUS/S5P/OFFL/L3_SO2', 'band': 'SO2_column_number_density'},
-    'O3':  {'collection': 'COPERNICUS/S5P/OFFL/L3_O3',  'band': 'O3_column_number_density'},
-}
+    print("\n✅ Descarga y estructuración local completada con éxito")
 
-# ─── FUNCIÓN WORKER (TAREA DASK) ─────────────────────────────────────────────
-def procesar_s5p(fecha_str, contaminante):
-    """
-    Descarga 1 gas para 1 día específico y lo envía a Wasabi.
-    """
-    try:
-        # 1. Cliente Boto3 dentro del worker
-        s3_client = boto3.client('s3',
-            endpoint_url=f'https://s3.{WASABI_REGION}.wasabisys.com',
-            aws_access_key_id=WASABI_ACCESS_KEY,
-            aws_secret_access_key=WASABI_SECRET_KEY
-        )
-
-        # 2. Manejo de fechas en GEE
-        start = ee.Date(fecha_str)
-        end   = start.advance(1, 'day')
-        año   = fecha_str.split('-')[0]
-        config = CONTAMINANTES[contaminante]
-
-        # 3. Filtrar colección
-        coleccion = (ee.ImageCollection(config['collection'])
-                     .filterBounds(CALI_BBOX)
-                     .filterDate(start, end)
-                     .select(config['band']))
-
-        # Verificar si el satélite pasó ese día sobre Cali
-        if coleccion.size().getInfo() == 0:
-            return f"[{fecha_str} | {contaminante}] Sin pasada del satélite."
-
-        # Promediar si hay más de 1 órbita y recortar a Cali
-        imagen_diaria = coleccion.mean().clip(CALI_BBOX)
-        nombre_archivo = f'S5P_{contaminante}_{fecha_str}.tif'
-
-        # 4. Generar URL de descarga directa a RAM
-        url = imagen_diaria.getDownloadURL({
-            'scale': SCALE,
-            'crs': 'EPSG:4326',
-            'region': CALI_BBOX,
-            'format': 'GEO_TIFF'
-        })
-
-        # 5. Descargar a memoria
-        response = requests.get(url)
-        if response.status_code != 200:
-            return f"[{fecha_str} | {contaminante}] Error HTTP de GEE."
-
-        # 6. Subir directamente a Wasabi
-        # Ruta: GeoVision/Sentinel5P/NO2/2020/archivo.tif
-        s3_client.put_object(
-            Bucket=WASABI_BUCKET,
-            Key=f'GeoVision/Sentinel5P/{contaminante}/{año}/{nombre_archivo}',
-            Body=response.content
-        )
-
-        return f"[{fecha_str} | {contaminante}] Éxito."
-
-    except Exception as e:
-        return f"[{fecha_str} | {contaminante}] Error: {str(e)}"
-
-# ─── UTILIDADES ──────────────────────────────────────────────────────────────
-def generar_fechas(start_date, end_date):
-    delta = end_date - start_date
-    return [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(delta.days + 1)]
-
-# ─── EJECUCIÓN DISTRIBUIDA CON DASK ──────────────────────────────────────────
 if __name__ == '__main__':
-    print("Iniciando cluster local de Dask...")
-    
-    # 4 workers está perfecto porque la descarga va a la RAM y es muy ligera
-    client = Client(n_workers=4, threads_per_worker=2, memory_limit='4GB')
-    print(f"Panel Dask: {client.dashboard_link}")
-
-    # Generar los 5 años (1827 días)
-    fecha_inicio = date(2020, 1, 1)
-    fecha_fin    = date(2024, 12, 31)
-    lista_fechas = generar_fechas(fecha_inicio, fecha_fin)
-
-    print("\nConstruyendo el grafo de tareas...")
-    futures = []
-    
-    # Creamos una tarea por cada día y por cada contaminante
-    for fecha in lista_fechas:
-        for contaminante in CONTAMINANTES.keys(): # NO2, SO2, O3
-            futures.append(dask.delayed(procesar_s5p)(fecha, contaminante))
-
-    total_tareas = len(futures)
-    print(f"Lanzando {total_tareas} tareas en paralelo... (Aprox 10-15 min)")
-    
-    # Ejecución paralela
-    resultados = dask.compute(*futures)
-
-    # Métricas Finales
-    exitosos = sum(1 for r in resultados if '✅' in r)
-    vacios   = sum(1 for r in resultados if '⚠️' in r)
-    errores  = sum(1 for r in resultados if '❌' in r)
-
-    print("\n" + "="*45)
-    print("REPORTE FINAL SENTINEL-5P (2020-2024)")
-    print("="*45)
-    print(f"Archivos subidos: {exitosos}")
-    print(f"Días sin órbitas: {vacios} (Normal en los polos/trópicos)")
-    print(f"Errores GEE/Red : {errores}")
-    print("=============================================")
+    extraer_sisaire_local()

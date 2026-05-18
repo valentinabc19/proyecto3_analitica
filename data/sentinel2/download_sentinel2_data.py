@@ -75,6 +75,10 @@ def procesar_sentinel_a_wasabi(index):
         try:
             s3_client.head_object(Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_bands)
             s3_client.head_object(Bucket=os.getenv('WASABI_BUCKET'), Key=ruta_wasabi_scl)
+            
+            # ¡AGREGA ESTE PRINT PARA VERLO EN VIVO!
+            print(f"[⏭️] Omitido (Ya existe): {fecha} | {img_id_short}")
+            
             return f"[⏭️] Omitido (Ya existe): {fecha} | {img_id_short}"
         except botocore.exceptions.ClientError as e:
             if e.response['Error']['Code'] == "404":
@@ -131,8 +135,7 @@ def procesar_sentinel_a_wasabi(index):
 if __name__ == '__main__':
     print(f"Total de imágenes Sentinel-2 a procesar: {total_images}")
     
-    # ⚠️ CAMBIO VITAL: Bajamos a 1 worker para evitar el ban de Google ⚠️
-    client = Client(n_workers=1, threads_per_worker=1, memory_limit='6GB')
+    client = Client(n_workers=2, threads_per_worker=1, memory_limit='8GB')
     print(f"Panel de Dask: {client.dashboard_link}")
 
     print("\nConstruyendo grafo de tareas...")

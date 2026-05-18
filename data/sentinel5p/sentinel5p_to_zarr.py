@@ -1,7 +1,5 @@
 import os
 import re
-import json
-import hashlib
 import numpy as np
 import xarray as xr
 import rioxarray

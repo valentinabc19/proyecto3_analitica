@@ -3,3 +3,7 @@ venv/
 
 #Variables de entorno
 .env
+
+#Archivos que se deben ignorar, no son relevantes
+data/sisaire/data_estaciones.csv
+data/sisaire/SVCASC_FT_50-Datos_Monitores_SVCASC_2020-2025.xlsx

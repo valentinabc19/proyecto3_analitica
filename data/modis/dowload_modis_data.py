@@ -2,6 +2,7 @@ import os
 import ee
 import requests
 import boto3
+import botocore
 import dask
 from dask.distributed import Client
 from datetime import date, timedelta
@@ -45,17 +46,29 @@ def export_daily_to_wasabi(target_date_str):
             aws_secret_access_key=WASABI_SECRET_KEY
         )
 
+        year  = target_date_str.split('-')[0] 
+        label = f'MODIS_AOD_Cali_{target_date_str}.tif'
+        ruta_wasabi = f'MODIS/{year}/{label}'
+
+        # ─── MANEJO DE ERRORES: CHECKPOINT (Saltar existentes) ───
+        try:
+            s3_client.head_object(Bucket=WASABI_BUCKET, Key=ruta_wasabi)
+            return f"[{target_date_str}] ⏭️ Omitido (Ya existe)"
+        except botocore.exceptions.ClientError as e:
+            if e.response['Error']['Code'] == "404":
+                pass # No existe en Wasabi, continuamos con la descarga
+            else:
+                raise # Fallo de conexión o credenciales
+        # ─────────────────────────────────────────────────────────
+
         start = ee.Date(target_date_str)
         end   = start.advance(1, 'day')
-        year  = target_date_str.split('-')[0] 
 
         img_daily = (modis_raw
                      .filterDate(start, end)
                      .median()              
                      .clip(cali))
         
-        label = f'MODIS_AOD_Cali_{target_date_str}.tif'
-
         url = img_daily.getDownloadURL({
             'scale': 1000,           
             'crs': 'EPSG:4326',      
@@ -65,23 +78,31 @@ def export_daily_to_wasabi(target_date_str):
 
         response = requests.get(url)
         if response.status_code != 200:
-            return f"[{target_date_str}] Error HTTP de GEE."
+            return f"[{target_date_str}] ❌ Error HTTP de GEE: Código {response.status_code}"
 
         # SUBIDA A WASABI
         s3_client.put_object(
             Bucket=WASABI_BUCKET,
-            Key=f'MODIS/{year}/{label}', 
+            Key=ruta_wasabi, 
             Body=response.content
         )
         
-        return f'[{target_date_str}] Éxito.'
+        return f"[{target_date_str}] ✅ Éxito"
 
+    # ─── MANEJO DE ERRORES DETALLADO ───
+    except ee.ee_exception.EEException as e:
+        error_str = str(e)
+        if "empty" in error_str.lower() or "no features" in error_str.lower():
+            return f"[{target_date_str}] ☁️ Sin datos (100% Nubes)"
+        else:
+            return f"[{target_date_str}] ❌ Error GEE: {error_str}"
     except Exception as e:
-        return f"[{target_date_str}] Omitido (Sin datos o error de red)"
+        return f"[{target_date_str}] ❌ Error General: {str(e)}"
 
 def generate_date_list(start_date, end_date):
     delta = end_date - start_date
     return [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(delta.days + 1)]
+
 
 # ─── 5. EJECUCIÓN PRINCIPAL ──────────────────────────────────────────────────
 if __name__ == '__main__':
@@ -111,9 +132,23 @@ if __name__ == '__main__':
     print(f"Lanzando tareas en paralelo...")
     resultados = dask.compute(*futures)
 
-    exitosos = sum(1 for r in resultados if 'Éxito' in r)
-    omitidos = len(resultados) - exitosos
+    # ─── REPORTE CON MANEJO DE ERRORES ───
+    exitosos   = sum(1 for r in resultados if '✅' in r)
+    existentes = sum(1 for r in resultados if '⏭️' in r)
+    nublados   = sum(1 for r in resultados if '☁️' in r)
+    errores    = sum(1 for r in resultados if '❌' in r)
 
-    print('\n Proceso de extracción finalizado')
-    print(f" - Días descargados con éxito: {exitosos}")
-    print(f" - Días sin datos (nubes/errores): {omitidos}")
+    print('\n========================================')
+    print(' PROCESO DE EXTRACCIÓN MODIS FINALIZADO')
+    print('========================================')
+    print(f" - Nuevos descargados con éxito : {exitosos}")
+    print(f" - Omitidos (Ya existían)       : {existentes}")
+    print(f" - Días sin datos (100% Nubes)  : {nublados}")
+    print(f" - Días con errores GEE/Red     : {errores}")
+    print('========================================')
+
+    if nublados > 0 or errores > 0:
+        print("\n🔍 DETALLE DE LOS DÍAS FALLIDOS:")
+        for res in resultados:
+            if '☁️' in res or '❌' in res:
+                print(f"  {res}")

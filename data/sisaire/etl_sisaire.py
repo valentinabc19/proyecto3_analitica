@@ -1,115 +1,69 @@
-import os
-import pandas as pd
+import dask.bag as db
+from dask.distributed import Client
 import urllib.parse
+import boto3
+import calendar
+import os
+from dotenv import load_dotenv
 
-# ─── 1. RUTAS LOCALES ────────────────────────────────────────────────────────
-CARPETA_DESTINO = './data/sisaire'
-# Cambiamos el nombre para que refleje el dataset completo
-RUTA_LOCAL_CSV  = f'{CARPETA_DESTINO}/data_estaciones.csv' 
+load_dotenv()
 
-def extraer_datos_terrestres():
-    print("🌐 Conectando directamente al CSV de la API de Datos Abiertos...")
+# ─── CONFIGURACIÓN WASABI ───
+WASABI_ACCESS_KEY = os.getenv("WASABI_ACCESS_KEY")
+WASABI_SECRET_KEY = os.getenv("WASABI_SECRET_KEY")
+WASABI_ENDPOINT = "https://s3.wasabisys.com"
+RAW_BUCKET = os.getenv("WASABI_BUCKET")
+
+# Validación rápida para evitar errores
+if not WASABI_ACCESS_KEY or not RAW_BUCKET:
+    raise ValueError("Faltan credenciales en el archivo .env")
+
+def descargar_mes_raw(mes_año):
+    year, month = mes_año
+    last_day = calendar.monthrange(year, month)[1]
     
-    # ─── 2. CREAR LA URL DE DESCARGA DIRECTA (SoQL) ────────────────────────
-    # 🔥 AÑADIMOS 'SISAIRE' A LAS AUTORIDADES AMBIENTALES
-    consulta_sql = """
+    # Query basada en tu código pero segmentada por mes para Dask
+    consulta_sql = f"""
     SELECT * 
-    WHERE (municipio = 'Cali' 
-           OR municipio = 'Santiago de Cali' 
-           OR municipio = 'Yumbo' 
-           OR nombre_fgda = 'CVC'
-           OR nombre_fgda = 'SISAIRE') 
-      AND med_fecha_inicio >= '2020-01-01T00:00:00.000' 
-      AND med_fecha_inicio <= '2024-12-31T23:59:59.000'
+    WHERE (municipio = 'Cali' OR municipio = 'Santiago de Cali' OR municipio = 'Yumbo' 
+           OR nombre_fgda = 'CVC' OR nombre_fgda = 'SISAIRE' OR nombre_fgda = 'SISAIRE - CVC' OR nombre_fgda = 'IDEAM' OR nombre_fgda = 'DAGMA') 
+      AND med_fecha_inicio >= '{year}-{month:02d}-01T00:00:00.000' 
+      AND med_fecha_inicio <= '{year}-{month:02d}-{last_day:02d}T23:59:59.000'
     LIMIT 32788084
     """
     
     consulta_codificada = urllib.parse.quote(consulta_sql.strip())
-    url_descarga = f"https://www.datos.gov.co/resource/g4t8-zkc3.csv?$query={consulta_codificada}"
-    
-    print("⏳ Descargando registros históricos (DAGMA, CVC, SISAIRE)...")
+    url = f"https://www.datos.gov.co/resource/g4t8-zkc3.csv?$query={consulta_codificada}"
     
     try:
-        df_raw = pd.read_csv(url_descarga, low_memory=False)
+        # Descarga directa del stream de bytes
+        import requests
+        response = requests.get(url)
+        if response.status_code != 200:
+            return f"Error {response.status_code} en {year}-{month}"
+        
+        # Subir a Wasabi (Raw)
+        s3 = boto3.client('s3', endpoint_url=WASABI_ENDPOINT, 
+                          aws_access_key_id=WASABI_ACCESS_KEY, 
+                          aws_secret_access_key=WASABI_SECRET_KEY)
+        
+        path_wasabi = f"raw/year={year}/month={month:02d}/datos_brutos.csv"
+        s3.put_object(Body=response.content, Bucket=RAW_BUCKET, Key=path_wasabi)
+        
+        return f"Descargado: {year}-{month}"
     except Exception as e:
-        raise ValueError(f"❌ Error al descargar de la API: {e}")
-    
-    if df_raw.empty:
-        raise ValueError("❌ El CSV descargado está vacío. Verifica los parámetros.")
-        
-    print(f"✅ Descarga completada: {len(df_raw)} registros crudos obtenidos.")
-    
-    # ─── 3. LIMPIEZA Y TRANSFORMACIÓN ───────────────────────────────────────
-    print("🧹 Estructurando el Dataset...")
-    
-    columnas_utiles = {
-        'med_fecha_inicio': 'fecha',
-        'nombre_est': 'estacion', 
-        'nombre_fgda': 'autoridad', # Guardará DAGMA, CVC o SISAIRE
-        'msfl_code': 'contaminante',
-        'med_concentracion_estandar': 'concentracion',
-        'latitud': 'lat',
-        'longitud': 'lon'
-    }
-    
-    columnas_presentes = {k: v for k, v in columnas_utiles.items() if k in df_raw.columns}
-    df = df_raw[list(columnas_presentes.keys())].rename(columns=columnas_presentes)
-    
-    # Limpiar y convertir formatos
-    df['fecha'] = pd.to_datetime(df['fecha'], errors='coerce')
-    df['concentracion'] = pd.to_numeric(df['concentracion'], errors='coerce')
-    
-    # Arreglar coordenadas que vienen con coma
-    if df['lat'].dtype == object:
-        df['lat'] = df['lat'].str.replace(',', '.')
-    if df['lon'].dtype == object:
-        df['lon'] = df['lon'].str.replace(',', '.')
-        
-    df['lat'] = pd.to_numeric(df['lat'], errors='coerce')
-    df['lon'] = pd.to_numeric(df['lon'], errors='coerce')
-    
-    # Eliminar valores corruptos o vacíos
-    df = df.dropna(subset=['fecha', 'concentracion', 'lat', 'lon'])
-    
-    # ─── 4. FILTRO GEOESPACIAL (Bounding Box) ──────────────────────────────
-    print("🗺️ Aplicando recorte espacial estricto (BBox: -76.75, 3.20 a -76.30, 3.75)...")
-    # Este paso es VITAL: Descargamos toda la CVC y todo el SISAIRE de Colombia,
-    # pero aquí eliminamos todo lo que no esté en Cali y Yumbo.
-    df = df[
-        (df['lat'] >= 3.20) & (df['lat'] <= 3.75) &
-        (df['lon'] >= -76.75) & (df['lon'] <= -76.30)
-    ]
-    
-    # ─── 5. HOMOLOGACIÓN DE CONTAMINANTES ──────────────────────────────────
-    df['contaminante'] = df['contaminante'].astype(str).str.upper().str.strip()
-    df['contaminante'] = df['contaminante'].replace({
-        'PM 2.5': 'PM25',
-        'PM2.5': 'PM25',
-        'PM 10': 'PM10'
-    })
-    
-    contaminantes_validos = ['NO2', 'SO2', 'O3']
-    df = df[df['contaminante'].isin(contaminantes_validos)]
-    
-    # Variables de partición y análisis
-    df['año'] = df['fecha'].dt.year.astype(str)
-    df['mes'] = df['fecha'].dt.month.astype(str).str.zfill(2)
-    
-    print(f"✅ Estructura final: {len(df)} mediciones limpias.")
-    
-    # 🔥 REPORTE DE AUTORIDADES Y ESTACIONES
-    print("\n📍 Autoridades y Estaciones encontradas en la zona:")
-    resumen = df.groupby(['autoridad', 'estacion']).size().reset_index(name='mediciones')
-    for index, row in resumen.iterrows():
-        print(f"  - [{row['autoridad']}] {row['estacion']} ({row['mediciones']} registros)")
-    
-    # ─── 6. GUARDAR LOCALMENTE ─────────────────────────────────────────────
-    os.makedirs(CARPETA_DESTINO, exist_ok=True)
-
-    print(f"\n📄 Guardando CSV final en: {RUTA_LOCAL_CSV} ...")
-    df.to_csv(RUTA_LOCAL_CSV, index=False, encoding='utf-8')
-
-    print("🚀 ¡Proceso completado con éxito! Tus datos terrestres (Ground Truth) están listos.")
+        return f"Error en {year}-{month}: {e}"
 
 if __name__ == '__main__':
-    extraer_datos_terrestres()
+    client = Client(n_workers=4) # Pipeline distribuido
+    print(f"Dashboard de Dask: {client.dashboard_link}")
+    
+    # Generar lista de meses 2020-2024
+    meses = [(y, m) for y in range(2020, 2025) for m in range(1, 13)]
+    
+    # Ejecución distribuida
+    b = db.from_sequence(meses)
+    resultados = b.map(descargar_mes_raw).compute()
+    
+    for res in resultados:
+        print(res)

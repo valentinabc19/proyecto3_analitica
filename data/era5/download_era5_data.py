@@ -12,10 +12,10 @@ WASABI_ACCESS_KEY = os.getenv('WASABI_ACCESS_KEY')
 WASABI_SECRET_KEY = os.getenv('WASABI_SECRET_KEY')
 WASABI_REGION     = os.getenv('WASABI_REGION')
 WASABI_BUCKET     = os.getenv('WASABI_BUCKET')
-CDS_TOKEN         = os.getenv('CDS_TOKEN') # Tu token de Copernicus
+CDS_TOKEN         = os.getenv('CDS_TOKEN')
 CDS_URL           = os.getenv('CDS_URL')
 
-# ─── CONFIGURACIÓN GEOGRÁFICA Y TEMPORAL (Pág 4 del PDF) ─────────────────────
+# ─── CONFIGURACIÓN GEOGRÁFICA Y TEMPORAL ─────────────────────
 # Bounding Box para CDS [Norte, Oeste, Sur, Este]
 AREA = [3.75, -76.75, 3.00, -76.25]
 
@@ -28,11 +28,10 @@ VARIABLES = [
     '2m_temperature',
     '10m_u_component_of_wind',
     '10m_v_component_of_wind',
-    'boundary_layer_height',   # BLH (Capa Límite)
+    'boundary_layer_height',  
     '2m_dewpoint_temperature', # Usada para calcular Humedad Relativa (RH)
 ]
 
-# ─── FUNCIÓN DEL WORKER PARA DASK ────────────────────────────────────────────
 # ─── FUNCIÓN DEL WORKER PARA DASK ────────────────────────────────────────────
 def descargar_mes_y_subir(year, month):
     nombre_archivo = f'ERA5_Cali_{year}_{month}.nc'
@@ -51,7 +50,7 @@ def descargar_mes_y_subir(year, month):
         _, num_dias = calendar.monthrange(int(year), int(month))
         dias_del_mes = [str(d).zfill(2) for d in range(1, num_dias + 1)]
 
-        # ✅ URL y KEY pasados directamente: no depende de .cdsapirc ni os.environ
+        # URL y KEY pasados directamente: no depende de .cdsapirc ni os.environ
         c = cdsapi.Client(
             url='https://cds.climate.copernicus.eu/api',
             key=CDS_TOKEN,
@@ -91,7 +90,6 @@ def descargar_mes_y_subir(year, month):
 # ─── EJECUCIÓN DISTRIBUIDA ───────────────────────────────────────────────────
 if __name__ == '__main__':
     
-    # 3 workers máximo: Es la regla de oro de Copernicus para no banearte
     client = Client(n_workers=3, threads_per_worker=1, memory_limit='2GB')
     print("Dashboard de Dask:", client.dashboard_link)
 
@@ -105,7 +103,7 @@ if __name__ == '__main__':
             future = client.submit(descargar_mes_y_subir, year, month)
             futures.append(future)
 
-    # ── Tracking en tiempo real ──
+    # Tracking en tiempo real
     completadas = 0
     exitos = 0
     

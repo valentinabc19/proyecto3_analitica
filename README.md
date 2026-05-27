@@ -81,16 +81,6 @@ Los análisis incluyen pero no se limitan a:
 
 ## 👤 Autor
 
-**Valentina BC** - [@valentinabc19](https://github.com/valentinabc19)
-
-## 📄 Licencia
-
-Este proyecto no tiene una licencia específica. Siéntete libre de usarlo como referencia.
-
-## 📞 Contacto
-
-Para preguntas o sugerencias sobre este proyecto, abre un issue en el repositorio.
-
----
-
-**Última actualización:** Mayo 2026
+**Valentina Bueno Collazos** - [@valentinabc19](https://github.com/valentinabc19)
+**Esmeralda Erazo Varela** - [@memerazo](https://github.com/memerazo)
+**Natalia Moreno Montoya** - [@natam226](https://github.com/natam226)

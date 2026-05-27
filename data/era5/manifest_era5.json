@@ -1,0 +1,1022 @@
+[
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_01.nc",
+        "hash_MD5": "74110110180f1fb46abef923e2449190",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-01",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_02.nc",
+        "hash_MD5": "d3d7d3d6e5a7e48d7fa26cbeaa556ee9",
+        "dimensiones": {
+            "valid_time": 696,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-02",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_03.nc",
+        "hash_MD5": "dd3ef42f887a25b4bcf72f6983e1ff82",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-03",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_04.nc",
+        "hash_MD5": "7851ff5d3c87ee050cb986a905f53d13",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-04",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_05.nc",
+        "hash_MD5": "90c82d8f08a0da6884a211cf408552a2",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-05",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_06.nc",
+        "hash_MD5": "aa1f5194d4bb2f59d3953a1aa3dc343a",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-06",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_07.nc",
+        "hash_MD5": "dae7fc514ddfc01065b977a674c57665",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-07",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_08.nc",
+        "hash_MD5": "bae495dd75a5992eb394aa1bfc44dbb0",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-08",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_09.nc",
+        "hash_MD5": "0312d85368943b1d69b4254ace58e6fd",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-09",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_10.nc",
+        "hash_MD5": "91227344bbb2e43a5867aec65c734763",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-10",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_11.nc",
+        "hash_MD5": "073d3334531552613b363ef93d201c45",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-11",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2020_12.nc",
+        "hash_MD5": "bd6a36b9f9b8ad20469b1a273f53b43f",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2020-12",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_01.nc",
+        "hash_MD5": "8944bd1c303bb029c24356eef2663a57",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-01",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_02.nc",
+        "hash_MD5": "b8ff9fe494316d59426f337a8bc5c6bc",
+        "dimensiones": {
+            "valid_time": 672,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-02",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_03.nc",
+        "hash_MD5": "c1949fefa1572cfc4e7ac4ada263d325",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-03",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_04.nc",
+        "hash_MD5": "7c97d27690e65196e27ecb8d4c5329d0",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-04",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_05.nc",
+        "hash_MD5": "203764d89666123834c73093c780de24",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-05",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_06.nc",
+        "hash_MD5": "f170b4488e005bc0ff8c17726a3e7120",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-06",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_07.nc",
+        "hash_MD5": "985384a6761515dc45342b768e928d7f",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-07",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_08.nc",
+        "hash_MD5": "486ab5dc936d68018f4eb66bc3d40977",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-08",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_09.nc",
+        "hash_MD5": "2c51c6d12c3afea6770aaa108ec5c4b5",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-09",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_10.nc",
+        "hash_MD5": "76ff5253ce76f6177819696616a2da2d",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-10",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_11.nc",
+        "hash_MD5": "43e2908f56314232d6eaf0921e8536cb",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-11",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2021_12.nc",
+        "hash_MD5": "cfd08383cf3504beb91d78b865babe64",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2021-12",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_01.nc",
+        "hash_MD5": "4a63e00c049ef8b3145d0f5e24846637",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-01",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_02.nc",
+        "hash_MD5": "5620afcf36be734e7a703100ad6badf2",
+        "dimensiones": {
+            "valid_time": 672,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-02",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_03.nc",
+        "hash_MD5": "2f8bb9f61dc2add48bb7c3b0b049457f",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-03",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_04.nc",
+        "hash_MD5": "bf6d28b3504e3d6060d1b495c96b86c3",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-04",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_05.nc",
+        "hash_MD5": "f423b9e1fe6fd386f787ed6d3276e0d0",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-05",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_06.nc",
+        "hash_MD5": "11f32a27715fd9b1f64343c305a1da27",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-06",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_07.nc",
+        "hash_MD5": "1275b6809248ed22f88c208b0e521c92",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-07",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_08.nc",
+        "hash_MD5": "ec29b709c0780bf05beaff5f5b53af9e",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-08",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_09.nc",
+        "hash_MD5": "c86435ae72d969a528d8e66e38793c26",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-09",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_10.nc",
+        "hash_MD5": "cfddc5e86c58a1169e637b9dc5959648",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-10",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_11.nc",
+        "hash_MD5": "32786a8db4c25c027e860b891625111e",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-11",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2022_12.nc",
+        "hash_MD5": "2670ebd0c41e06be8c817b01952b9859",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2022-12",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_01.nc",
+        "hash_MD5": "9a0ea44701a883296fb21e7b2c68b0e5",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-01",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_02.nc",
+        "hash_MD5": "cedc03380530b33bce55b8b224766d87",
+        "dimensiones": {
+            "valid_time": 672,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-02",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_03.nc",
+        "hash_MD5": "631d99cb810741caa45b212e3bedd2fc",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-03",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_04.nc",
+        "hash_MD5": "9159afb8a230d4bdcea3d47b4c3c3120",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-04",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_05.nc",
+        "hash_MD5": "5b2f85a653e993302444cc0f6d1e8f44",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-05",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_06.nc",
+        "hash_MD5": "7c2746223f3a7e86f9bd16a44ebfd558",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-06",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_07.nc",
+        "hash_MD5": "f244d28b086531db5fdfe322d202989b",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-07",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_08.nc",
+        "hash_MD5": "591dd0c6b22cc23f9e667967326ea5e4",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-08",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_09.nc",
+        "hash_MD5": "c36df2f73b4eeecbd9c3b5ff99ef0021",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-09",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_10.nc",
+        "hash_MD5": "2df87a439c3097a137958890b2ad48e6",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-10",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_11.nc",
+        "hash_MD5": "a68839e44311fee8e854211b2fa53358",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-11",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2023_12.nc",
+        "hash_MD5": "edda222d7d7449fdfe02a3f694a277ce",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2023-12",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_01.nc",
+        "hash_MD5": "3ee6814c99975430dab9db659811cca6",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-01",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_02.nc",
+        "hash_MD5": "ed57b9411f1dbb8c2bc16a36c966908e",
+        "dimensiones": {
+            "valid_time": 696,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-02",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_03.nc",
+        "hash_MD5": "c9c3e484d4091bcf015d433f3b7259bd",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-03",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_04.nc",
+        "hash_MD5": "21b855b2f1ee72ca2bea1bfa4240aecf",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-04",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_05.nc",
+        "hash_MD5": "6fb8a8a87e23c323c5196a4525db7bcb",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-05",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_06.nc",
+        "hash_MD5": "1feb4441a8b87b2b54536ce6c0758a22",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-06",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_07.nc",
+        "hash_MD5": "e8629d1215e4c78f83bb4754b5a0c4d5",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-07",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_08.nc",
+        "hash_MD5": "fdd1dcaf83db367c734c53a0e5d7ed10",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-08",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_09.nc",
+        "hash_MD5": "f08ae9c0f773dc153757a1a511268a51",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-09",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_10.nc",
+        "hash_MD5": "fa83d67c514556e79b218b320250457f",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-10",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_11.nc",
+        "hash_MD5": "e71703872a55e2d9812e8284c1618b90",
+        "dimensiones": {
+            "valid_time": 720,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-11",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/ERA5prueba/ERA5_Cali_2024_12.nc",
+        "hash_MD5": "9232322a5e3281ee8e4f201fa7dba307",
+        "dimensiones": {
+            "valid_time": 744,
+            "latitude": 4,
+            "longitude": 3
+        },
+        "fecha_de_adquisicion": "2024-12",
+        "fuente": "ERA5",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    }
+]

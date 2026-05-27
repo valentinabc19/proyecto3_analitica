@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#4af0b0"
+backgroundColor = "#0a0c10"
+secondaryBackgroundColor = "#10141c"
+textColor = "#e8ecf4"
+font = "sans serif"
+
+[client]
+# Esto asegura que la navegación por carpetas esté explícitamente activa
+showSidebarNavigation = true

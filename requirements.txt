@@ -103,3 +103,4 @@ xarray==2026.4.0
 xyzservices==2026.3.0
 zarr==3.2.1
 python-dotenv==1.0.0
+streamlit==1.30.0

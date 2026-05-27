@@ -37,6 +37,8 @@ google-cloud-storage==3.10.1
 google-crc32c==1.8.0
 google-resumable-media==2.9.0
 googleapis-common-protos==1.75.0
+h5netcdf==1.8.1
+h5py==3.16.0
 httplib2==0.31.2
 idna==3.13
 ipyevents==2.0.4

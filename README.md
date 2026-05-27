@@ -81,6 +81,6 @@ Los análisis incluyen pero no se limitan a:
 
 ## 👤 Autor
 
-**Valentina Bueno Collazos** - [@valentinabc19](https://github.com/valentinabc19)
-**Esmeralda Erazo Varela** - [@memerazo](https://github.com/memerazo)
-**Natalia Moreno Montoya** - [@natam226](https://github.com/natam226)
+- **Valentina Bueno Collazos** - [@valentinabc19](https://github.com/valentinabc19)
+- **Esmeralda Erazo Varela** - [@memerazo](https://github.com/memerazo)
+- **Natalia Moreno Montoya** - [@natam226](https://github.com/natam226)

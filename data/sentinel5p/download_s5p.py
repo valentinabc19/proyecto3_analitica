@@ -34,9 +34,9 @@ CALI_BBOX = ee.Geometry.Rectangle(
     [-76.75, 3.20, -76.30, 3.75]
 )
 
-SCALE       = 7000          # Resolución coherente con Sentinel-5P (~5.5-7 km)
+SCALE       = 7000          # Resolución coherente con Sentinel-5P
 EXPORT_CRS  = 'EPSG:4326'
-BANDA_CLOUD = 'cloud_fraction'  # Disponible en todas las colecciones OFFL S5P
+BANDA_CLOUD = 'cloud_fraction'
 
 CONTAMINANTES = {
     'NO2': {'collection': 'COPERNICUS/S5P/OFFL/L3_NO2', 'band': 'tropospheric_NO2_column_number_density'},
@@ -104,7 +104,7 @@ def procesar_s5p(fecha_str: str, contaminante: str) -> list | str:
         for i in range(size):
             image = ee.Image(image_list.get(i))
 
-            # Seleccionar cloud_fraction sin aplicar máscara QA
+            # Seleccionar cloud_fraction
             try:
                 image = image.select([pollutant_band, BANDA_CLOUD])
             except Exception:

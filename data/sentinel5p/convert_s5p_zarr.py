@@ -67,7 +67,6 @@ fs = s3fs.S3FileSystem(
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PARSEAR NOMBRE DE ARCHIVO
-# Espera: S5P_NO2_2020-01-01_13-45-11.tif
 # ─────────────────────────────────────────────────────────────────────────────
 def parsear_nombre(ruta: str):
     nombre = ruta.split('/')[-1]
@@ -233,7 +232,6 @@ def procesar_tiff(ruta: str, referencia_grid: dict, timestamps_vistos: set):
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CONSTRUIR ENCODING
-# Se llama una sola vez por contaminante al conocer las variables del primer lote.
 # ─────────────────────────────────────────────────────────────────────────────
 def construir_encoding(ds_batch: xr.Dataset, compressor) -> dict:
     encoding = {
@@ -243,8 +241,8 @@ def construir_encoding(ds_batch: xr.Dataset, compressor) -> dict:
         }
         for var in ds_batch.data_vars
     }
-    # Epoch fija en microsegundos — evita overflow al hacer append
-    # cuando el rango temporal es grande (ej. 2020–2024).
+    # Epoch fija en microsegundos - evita overflow al hacer append
+    # cuando el rango temporal es grande.
     encoding['time'] = {
         'units':    'microseconds since 1970-01-01',
         'calendar': 'proleptic_gregorian',

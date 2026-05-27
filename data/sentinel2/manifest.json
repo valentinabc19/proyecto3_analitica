@@ -1,0 +1,80 @@
+{
+  "version": "3.0.0",
+  "titulo": "Sentinel-2 Patches 64×64 Balanceados con VAE",
+  "generado": "2026-05-17T06:20:06.397562",
+  "path_zarr": "gs://geovision-sentinel2-cali/zarr/sentinel2_patches_balanced.zarr",
+  "dataset": {
+    "total_patches": 87740,
+    "patch_size": 64,
+    "bandas": [
+      "B4_red",
+      "B8_nir",
+      "B11_swir",
+      "B2_blue"
+    ],
+    "clases": [
+      "vegetation",
+      "soil",
+      "water"
+    ]
+  },
+  "balance": {
+    "vegetation": {
+      "n": 29570,
+      "porcentaje": 33.7
+    },
+    "soil": {
+      "n": 28980,
+      "porcentaje": 33
+    },
+    "water": {
+      "n": 29190,
+      "porcentaje": 33.3
+    }
+  },
+  "estadisticas": {
+    "vegetation": {
+      "n_patches": 29570,
+      "shape": [29570, 4, 64, 64],
+      "dtype": "float32",
+      "min": 0,
+      "max": 11687.5,
+      "mean": 2073.81372070313,
+      "std": 1617.57592773438
+    },
+    "soil": {
+      "n_patches": 28980,
+      "shape": [28980, 4, 64, 64],
+      "dtype": "float32",
+      "min": 0,
+      "max": 16128.2001953125,
+      "mean": 3919.1484375,
+      "std": 2184.67456054688
+    },
+    "water": {
+      "n_patches": 29190,
+      "shape": [29190, 4, 64, 64],
+      "dtype": "float32",
+      "min": 90,
+      "max": 16652.900390625,
+      "mean": 1637.25244140625,
+      "std": 1908.13952636719
+    }
+  },
+  "metadata": {
+    "sin_nan": true,
+    "augmentation": "ruido, brillo±10%, smooth (NO flip)",
+    "clasificacion": "NDVI + NDWI",
+    "vae_water": {
+      "patches_reales": 2190,
+      "patches_sinteticos": 27000,
+      "metodo": "VAE (latent_dim=128, epochs=100)"
+    }
+  },
+  "fuente": {
+    "satelite": "Sentinel-2 L2A",
+    "periodo": "2020-2024",
+    "region": "Cali, Colombia",
+    "bbox": [-76.75, 3.2, -76.3, 3.75]
+  }
+}

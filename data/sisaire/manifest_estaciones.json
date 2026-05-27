@@ -1,0 +1,962 @@
+[
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=01/datos_brutos.csv",
+        "hash_MD5": "de701dd73af07cb41c373e8274604e22",
+        "dimensiones": {
+            "filas": 41988,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-01",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=02/datos_brutos.csv",
+        "hash_MD5": "8fe2028974dac710873eac82879164bf",
+        "dimensiones": {
+            "filas": 49926,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-02",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=03/datos_brutos.csv",
+        "hash_MD5": "c75061b30ca34c9d92df642e2e873d7e",
+        "dimensiones": {
+            "filas": 51685,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-03",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=04/datos_brutos.csv",
+        "hash_MD5": "c75c29c808473896516ca2ea93c419e0",
+        "dimensiones": {
+            "filas": 48519,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-04",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=05/datos_brutos.csv",
+        "hash_MD5": "bc43975b5c2edadfc930fc68ee4fd2f2",
+        "dimensiones": {
+            "filas": 58151,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-05",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=06/datos_brutos.csv",
+        "hash_MD5": "965b367edf5d767c00c90784c5fd3ea7",
+        "dimensiones": {
+            "filas": 50466,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-06",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=07/datos_brutos.csv",
+        "hash_MD5": "3f865274f68ff4aed91b8601e610daf4",
+        "dimensiones": {
+            "filas": 61449,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-07",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=08/datos_brutos.csv",
+        "hash_MD5": "fd837c3f1c1ea06a81373bebe90a0e49",
+        "dimensiones": {
+            "filas": 70233,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-08",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=09/datos_brutos.csv",
+        "hash_MD5": "44525e7114a4ac4250838ab3b4350036",
+        "dimensiones": {
+            "filas": 66215,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-09",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=10/datos_brutos.csv",
+        "hash_MD5": "c412e740037ba3110c778872df9b4f9d",
+        "dimensiones": {
+            "filas": 63491,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-10",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=11/datos_brutos.csv",
+        "hash_MD5": "867dd53bf4d50c0c6bfbe8e2d123c23d",
+        "dimensiones": {
+            "filas": 57485,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-11",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2020/month=12/datos_brutos.csv",
+        "hash_MD5": "b8b574e2d08fffc9a497c52649dca316",
+        "dimensiones": {
+            "filas": 54411,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2020-12",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=01/datos_brutos.csv",
+        "hash_MD5": "6d38cbe391ed72c751caab0e21878699",
+        "dimensiones": {
+            "filas": 51593,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-01",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=02/datos_brutos.csv",
+        "hash_MD5": "b1510dc91435802008e4d546190ef616",
+        "dimensiones": {
+            "filas": 47155,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-02",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=03/datos_brutos.csv",
+        "hash_MD5": "74e5e4babe09f99b4708b149c3ea0619",
+        "dimensiones": {
+            "filas": 53043,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-03",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=04/datos_brutos.csv",
+        "hash_MD5": "6b50afcbe5a596f1a5ab9ffcafe4844b",
+        "dimensiones": {
+            "filas": 50380,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-04",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=05/datos_brutos.csv",
+        "hash_MD5": "ff2a98bf6aa141c90a7932137045f848",
+        "dimensiones": {
+            "filas": 51586,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-05",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=06/datos_brutos.csv",
+        "hash_MD5": "7f0957f112fa92d9fcc1bfda012113da",
+        "dimensiones": {
+            "filas": 41137,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-06",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=07/datos_brutos.csv",
+        "hash_MD5": "b4e0ab4685f77d96b014f170653e6680",
+        "dimensiones": {
+            "filas": 41662,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-07",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=08/datos_brutos.csv",
+        "hash_MD5": "b13f16d4a13683348fb43996a1eec437",
+        "dimensiones": {
+            "filas": 58803,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-08",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=09/datos_brutos.csv",
+        "hash_MD5": "04e92b0066cd2533f27f5755c74354a5",
+        "dimensiones": {
+            "filas": 57239,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-09",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=10/datos_brutos.csv",
+        "hash_MD5": "12ced4b90677f1e3ea324ba97a0d47b8",
+        "dimensiones": {
+            "filas": 61035,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-10",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=11/datos_brutos.csv",
+        "hash_MD5": "5a0ed4a87e882756da7f891c2bb5534d",
+        "dimensiones": {
+            "filas": 60198,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-11",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2021/month=12/datos_brutos.csv",
+        "hash_MD5": "aea34cb32fe8b93e193066a3be919bad",
+        "dimensiones": {
+            "filas": 43195,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2021-12",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=01/datos_brutos.csv",
+        "hash_MD5": "b1eb1db1ee417edf013b521051d51d5e",
+        "dimensiones": {
+            "filas": 47260,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-01",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=02/datos_brutos.csv",
+        "hash_MD5": "913f0ee860bf50069a6f4f055f9fa501",
+        "dimensiones": {
+            "filas": 49356,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-02",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=03/datos_brutos.csv",
+        "hash_MD5": "d800423e6df9ec476e06d5edb97e3538",
+        "dimensiones": {
+            "filas": 72780,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-03",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=04/datos_brutos.csv",
+        "hash_MD5": "c3c7b77028709854de67edd81ea7b9e0",
+        "dimensiones": {
+            "filas": 73918,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-04",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=05/datos_brutos.csv",
+        "hash_MD5": "2d5268227b818ef9b7a372ef94670f0c",
+        "dimensiones": {
+            "filas": 75795,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-05",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=06/datos_brutos.csv",
+        "hash_MD5": "69c567d0f807f7b80ed01abfd836f329",
+        "dimensiones": {
+            "filas": 74686,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-06",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=07/datos_brutos.csv",
+        "hash_MD5": "16cd4c00ad1f3ab869ddb3704ba85798",
+        "dimensiones": {
+            "filas": 72300,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-07",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=08/datos_brutos.csv",
+        "hash_MD5": "ce665b0bb257d40f8e4fabb0d4db078f",
+        "dimensiones": {
+            "filas": 79625,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-08",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=09/datos_brutos.csv",
+        "hash_MD5": "4832eb2502a008845418c66d6832822a",
+        "dimensiones": {
+            "filas": 51919,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-09",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=10/datos_brutos.csv",
+        "hash_MD5": "29882bd5d240b5a44f94b41e2ffc4c32",
+        "dimensiones": {
+            "filas": 73674,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-10",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=11/datos_brutos.csv",
+        "hash_MD5": "82b10cc2ca22d783abf0ac6b713f9d20",
+        "dimensiones": {
+            "filas": 57875,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-11",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2022/month=12/datos_brutos.csv",
+        "hash_MD5": "949d2925681c54c20ce29048aa5782fb",
+        "dimensiones": {
+            "filas": 57555,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2022-12",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=01/datos_brutos.csv",
+        "hash_MD5": "3c85ddf1fe25d9e66a762e7c6bc5d457",
+        "dimensiones": {
+            "filas": 58225,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-01",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=02/datos_brutos.csv",
+        "hash_MD5": "be4b6e3225e7c6dd6757e0ef939cb8f1",
+        "dimensiones": {
+            "filas": 60273,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-02",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=03/datos_brutos.csv",
+        "hash_MD5": "0aee6ab550aa62384a2171b426512c99",
+        "dimensiones": {
+            "filas": 66422,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-03",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=04/datos_brutos.csv",
+        "hash_MD5": "57a45489fa513662665a5b0cde2fbcac",
+        "dimensiones": {
+            "filas": 65678,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-04",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=05/datos_brutos.csv",
+        "hash_MD5": "8accbea6171e3a9a8d16468560a5fc7f",
+        "dimensiones": {
+            "filas": 69697,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-05",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=06/datos_brutos.csv",
+        "hash_MD5": "07363c17ba526c87e764ea82fa0cdbed",
+        "dimensiones": {
+            "filas": 64284,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-06",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=07/datos_brutos.csv",
+        "hash_MD5": "7153f9ccd4b0190b61193690ef9104a3",
+        "dimensiones": {
+            "filas": 72225,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-07",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=08/datos_brutos.csv",
+        "hash_MD5": "7e641f127740d8dec7ef3242e0a1a664",
+        "dimensiones": {
+            "filas": 71118,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-08",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=09/datos_brutos.csv",
+        "hash_MD5": "dfbaa447a4c7547804fe3b118fc746a3",
+        "dimensiones": {
+            "filas": 77400,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-09",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=10/datos_brutos.csv",
+        "hash_MD5": "c6653dddc1d92be6a711d62a38bb1b5a",
+        "dimensiones": {
+            "filas": 85275,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-10",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=11/datos_brutos.csv",
+        "hash_MD5": "17fa9196b825d66f5a89cb208e37d7f1",
+        "dimensiones": {
+            "filas": 78731,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-11",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2023/month=12/datos_brutos.csv",
+        "hash_MD5": "a20a691535c350ad8cdf9c8eb3464eaf",
+        "dimensiones": {
+            "filas": 82912,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2023-12",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=01/datos_brutos.csv",
+        "hash_MD5": "41c9470711e98cdea4553a5069e0acc5",
+        "dimensiones": {
+            "filas": 83098,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-01",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=02/datos_brutos.csv",
+        "hash_MD5": "86f6bb7de3d2f7a1a965512d37b0d12a",
+        "dimensiones": {
+            "filas": 81418,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-02",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=03/datos_brutos.csv",
+        "hash_MD5": "a87cebed5be0cbf5684803d9b93ef68b",
+        "dimensiones": {
+            "filas": 102747,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-03",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=04/datos_brutos.csv",
+        "hash_MD5": "1241c9b46861507bd6919d6033a5c2ea",
+        "dimensiones": {
+            "filas": 80821,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-04",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=05/datos_brutos.csv",
+        "hash_MD5": "3b2d45b678348e98e625ce7442cc6478",
+        "dimensiones": {
+            "filas": 74921,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-05",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=06/datos_brutos.csv",
+        "hash_MD5": "4a9a0495c68934522d7eb618dbf13077",
+        "dimensiones": {
+            "filas": 71341,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-06",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=07/datos_brutos.csv",
+        "hash_MD5": "d95689d856dbc0a3393bd4be05ea33fc",
+        "dimensiones": {
+            "filas": 73420,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-07",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=08/datos_brutos.csv",
+        "hash_MD5": "d7e85edb96ab95bd95fd8be94beba860",
+        "dimensiones": {
+            "filas": 71593,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-08",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=09/datos_brutos.csv",
+        "hash_MD5": "0ad04e2182af05b2feaca694aad5e046",
+        "dimensiones": {
+            "filas": 61902,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-09",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=10/datos_brutos.csv",
+        "hash_MD5": "4789fa4209bfeaf29044be6bbd44bb2a",
+        "dimensiones": {
+            "filas": 65790,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-10",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=11/datos_brutos.csv",
+        "hash_MD5": "297b7797a0def46dc5293d5415bbdaf7",
+        "dimensiones": {
+            "filas": 63816,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-11",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    },
+    {
+        "ruta": "s3://data-geo-raw/GeoVision/estaciones_raw_data/year=2024/month=12/datos_brutos.csv",
+        "hash_MD5": "17823b66188a34e87a89644accc5e7e9",
+        "dimensiones": {
+            "filas": 68890,
+            "columnas": 18
+        },
+        "fecha_de_adquisicion": "2024-12",
+        "fuente": "DAGMA / SISAIRE",
+        "bounding_box": [
+            -76.75,
+            3.2,
+            -76.3,
+            3.75
+        ]
+    }
+]
